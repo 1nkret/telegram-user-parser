@@ -1,69 +1,80 @@
 # Telegram Channel Members Parser
 
-Утилита для получения полного списка участников Telegram-канала или супергруппы с помощью вашего аккаунта Telegram через графический интерфейс (GUI).
+A utility for extracting the full list of members from a Telegram channel or supergroup using your Telegram account via a graphical user interface (GUI).
 
 ---
 
-## 🔧 Возможности
+## 🔧 Features
 
-- Авторизация по номеру телефона, с поддержкой 2FA (если включена)
-- Поддержка сессий Telegram (не требует повторного входа каждый раз)
-- Выбор канала, где вы являетесь **владельцем или админом**
-- Сбор информации о пользователях:
-  - username
-  - first_name
-  - last_name
-  - phone (если доступен)
-- Сохранение результата в `.csv` файл
-
----
-
-## ⚠️ Важно
-
-- Для получения **полного** списка участников вы должны быть **владельцем или администратором** канала.
-- Telegram ограничивает доступ к полному списку участников для обычных пользователей и администраторов без полного доступа.
-- Вам понадобятся `api_id` и `api_hash`, которые можно получить на [my.telegram.org](https://my.telegram.org).
+- Login via phone number, with support for 2FA (if enabled)
+- Telegram session support (no need to log in every time)
+- Channel selection where you are the **owner or an admin**
+- Extract user information:
+  - `username`
+  - `first_name`
+  - `last_name`
+  - `phone` (if available)
+- Save results to a `.csv` file
 
 ---
 
-## 📦 Структура проекта
+## ⚠️ Important
+
+- To get the **full** list of members, you must be the **owner or an admin** of the channel.
+- Telegram limits access to full member lists for regular users and non-privileged admins.
+- You will need `api_id` and `api_hash`, which can be obtained at [my.telegram.org](https://my.telegram.org).
+
+---
+
+## 📦 Project Structure
+
 ```
 app/
-├── config_manager.py # Работа с конфигурацией (API ID, HASH, телефон и т.д.)
-├── gui.py # Основной GUI-интерфейс
-├── gui_utils.py # Диалоги для ввода кода и пароля
-├── run.py # Запуск asyncio-цикла для GUI
-├── save_csv.py # Сохранение результатов в CSV
-├── schemas.py # Структура TelegramUserInfo
-├── telegram.py # Авторизация и логика парсинга участников
+├── config_manager.py   # Configuration manager (API ID, HASH, phone, etc.)
+├── gui.py              # Main GUI interface
+├── gui_utils.py        # Dialogs for entering code and password
+├── run.py              # Asyncio loop runner for the GUI
+├── save_csv.py         # CSV export functionality
+├── schemas.py          # TelegramUserInfo dataclass
+├── telegram.py         # Auth and user parsing logic
 main.py
 README.md
 requirements.txt
 ```
+
 ---
 
-## ✅ Установка и запуск
+## ✅ Installation & Usage
 
-### 1. Установка Python и зависимостей
+### 1. Install Python and dependencies
 
-Убедитесь, что установлен **Python 3.13**  
-Установите зависимости:
+Make sure you have **Python 3.13** installed.  
+Then install dependencies:
 
 ```bash
 pip install -r requirements.txt
 ```
-### 2. Запуск
-Запустите приложение через:
+
+### 2. Run the app
+
+Start the application with:
+
 ```bash
 python main.py
 ```
 
-При первом запуске откроется окно авторизации Telegram. После успешного входа вы сможете выбрать канал и сохранить список участников.
+On first launch, a Telegram login window will appear. After successful login, you’ll be able to select a channel and save its members to a CSV file.
 
 ---
-### 📂 Где хранятся данные?
-Все параметры (API ID, Hash, Телефон и др.) сохраняются в конфигурационном файле автоматически. Сессия Telegram клиента также сохраняется — повторный вход не требуется.
+
+### 📂 Where is data stored?
+
+All parameters (API ID, Hash, Phone, etc.) are saved automatically in a config file.  
+The Telegram client session is also stored — no need to log in again each time.
 
 ---
-### 📦 Готовые сборки
-Собранные .exe-версии программы доступны в [Releases](https://github.com/1nkret/telegram-user-parser/releases/).
+
+### 📦 Prebuilt Versions
+
+Precompiled `.exe` builds of this tool are available in the [Releases section](https://github.com/1nkret/telegram-user-parser/releases).  
+No Python installation is required — just download and run.
